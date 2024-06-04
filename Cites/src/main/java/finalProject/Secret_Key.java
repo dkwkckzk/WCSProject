@@ -14,9 +14,9 @@ import java.security.NoSuchAlgorithmException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-public class Secret_Key {
-    private static String algorithm;
-    private static int keySize;
+class Secret_Key {
+    private String algorithm;
+    private int keySize;
 
     public Secret_Key(String algorithm, int keySize) {
         this.algorithm = algorithm;
@@ -24,7 +24,7 @@ public class Secret_Key {
     }
 
     // 비밀키 생성
-    public static SecretKey createSKey() {
+    public SecretKey createSKey() {
         try {
             KeyGenerator keyGenerator = KeyGenerator.getInstance(algorithm);
             keyGenerator.init(keySize);
@@ -35,7 +35,7 @@ public class Secret_Key {
         }
     }
 
- // 비밀키 저장
+    // 비밀키 저장
     public boolean saveSKey(SecretKey secretKey, String keyFname) {
         String fullPath = AnimalFile.DIRECTORY_PATH + keyFname;
         try (FileOutputStream fos = new FileOutputStream(fullPath);
@@ -47,12 +47,11 @@ public class Secret_Key {
             return false;
         }
     }
-    
- // 비밀키 불러오기
+
+    // 비밀키 불러오기
     public static SecretKey loadSKey(String keyFname) {
-        // keyFname에 경로가 포함되어 있지 않도록 보장
-        String fullPath = AnimalFile.DIRECTORY_PATH + keyFname;
-        try (FileInputStream fis = new FileInputStream(fullPath);
+        //String fullPath = AnimalFile.DIRECTORY_PATH + keyFname;
+        try (FileInputStream fis = new FileInputStream(keyFname);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             return (SecretKey) ois.readObject();
         } catch (FileNotFoundException e) {
@@ -64,18 +63,17 @@ public class Secret_Key {
         }
         return null;
     }
-    
+
     public static void main(String[] args) {
         String algorithm = "AES"; // 사용할 암호화 알고리즘
         int keySize = 256; // 키의 크기
-        //String keyFname = "secretKey.ser"; // 비밀키를 저장할 파일 이름
-        String keyFname = "secretKey.ser";
+        String keyFname = "secretKey.ser"; // 비밀키를 저장할 파일 이름
 
         // Secret_Key 인스턴스 생성
         Secret_Key mySecretKey = new Secret_Key(algorithm, keySize);
 
         // 비밀키 생성
-        SecretKey secretKey = Secret_Key.createSKey();
+        SecretKey secretKey = mySecretKey.createSKey();
         if (secretKey == null) {
             System.out.println("비밀키 생성 실패");
             return;
@@ -98,3 +96,4 @@ public class Secret_Key {
         System.out.println("비밀키 성공적으로 생성, 저장, 불러오기 완료");
     }
 }
+

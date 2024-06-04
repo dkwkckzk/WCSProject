@@ -41,133 +41,24 @@ public class AnimalInfo {
         this.threats = threats;
         this.consActions = consActions;
     }
-    
-    public AnimalInfo() {
-    	
-    }
 
-    // Getter 및 Setter 메소드
-    public String getSciName() {
-        return sciName;
-    }
-
-    public void setSciName(String sciName) {
-        this.sciName = sciName;
-    }
-
-    public String getComName() {
-        return comName;
-    }
-
-    public void setComName(String comName) {
-        this.comName = comName;
-    }
-
-    public String getTaxon() {
-        return taxon;
-    }
-
-    public void setTaxon(String taxon) {
-        this.taxon = taxon;
-    }
-
-    public String getMorphChar() {
-        return morphChar;
-    }
-
-    public void setMorphChar(String morphChar) {
-        this.morphChar = morphChar;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getReproInfo() {
-        return reproInfo;
-    }
-
-    public void setReproInfo(String reproInfo) {
-        this.reproInfo = reproInfo;
-    }
-
-    public String getLocDiscovery() {
-        return locDiscovery;
-    }
-
-    public void setLocDiscovery(String locDiscovery) {
-        this.locDiscovery = locDiscovery;
-    }
-
-    public String getHabType() {
-        return habType;
-    }
-
-    public void setHabType(String habType) {
-        this.habType = habType;
-    }
-
-    public String getHabCond() {
-        return habCond;
-    }
-
-    public void setHabCond(String habCond) {
-        this.habCond = habCond;
-    }
-
-    public String getDiet() {
-        return diet;
-    }
-
-    public void setDiet(String diet) {
-        this.diet = diet;
-    }
-
-    public String getActPatterns() {
-        return actPatterns;
-    }
-
-    public void setActPatterns(String actPatterns) {
-        this.actPatterns = actPatterns;
-    }
-
-    public String getSocStruct() {
-        return socStruct;
-    }
-
-    public void setSocStruct(String socStruct) {
-        this.socStruct = socStruct;
-    }
-
-    public String getConsStatus() {
-        return consStatus;
-    }
-
-    public void setConsStatus(String consStatus) {
-        this.consStatus = consStatus;
-    }
-
-    public String getThreats() {
-        return threats;
-    }
-
-    public void setThreats(String threats) {
-        this.threats = threats;
-    }
-
-    public String getConsActions() {
-        return consActions;
-    }
-
-    public void setConsActions(String consActions) {
-        this.consActions = consActions;
-    }
-
-    // 필요에 따라 클래스 내에 메소드 추가 가능 (예: 정보 출력, 정보 수정 등)
+    // getter 메서드들
+    public String getSciName() { return sciName; }
+    public String getComName() { return comName; }
+    public String getTaxon() { return taxon; }
+    public String getMorphChar() { return morphChar; }
+    public String getSex() { return sex; }
+    public String getReproInfo() { return reproInfo; }
+    public String getLocDiscovery() { return locDiscovery; }
+    public String getHabType() { return habType; }
+    public String getHabCond() { return habCond; }
+    public String getDiet() { return diet; }
+    public String getActPatterns() { return actPatterns; }
+    public String getSocStruct() { return socStruct; }
+    public String getConsStatus() { return consStatus; }
+    public String getThreats() { return threats; }
+    public String getConsActions() { return consActions; }
 }
+
 
 

@@ -27,10 +27,10 @@ public class MakeDEnvelope {
     public static void createDigitalSignature(String originFile, String hashFile, String senderPriKeyF, String signatureFile) throws Exception {
     	System.out.println("오리지널 경로: " + originFile);
         byte[] fileHash = Hash.claFileHash(originFile);
-        System.out.println("생성된 해시 값:");
-        Hash.printDigest(fileHash);
+        //System.out.println("생성된 해시 값:");
+        //Hash.printDigest(fileHash);
 
-        try (FileOutputStream fos = new FileOutputStream(hashFile)) {
+        try (FileOutputStream fos = new FileOutputStream(AnimalFile.DIRECTORY_PATH + hashFile)) {
             fos.write(fileHash);
         }
 

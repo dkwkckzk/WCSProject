@@ -2,14 +2,18 @@
 
 package finalProject;
 
-import java.io.*;
-import java.nio.file.*;
-import java.security.*;
-import java.security.spec.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.Signature;
 
 public class DigitalSignature {
 
-    static byte[] createSignature(String priKeyFile1, String signatureFile1, String dataFile1) throws Exception {
+    static byte[] createSignature(String priKeyFile1, String signatureFileName, String dataFile1) throws Exception {
         // 개인키 읽기
         PrivateKey privateKey;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(priKeyFile1))) {
@@ -25,8 +29,11 @@ public class DigitalSignature {
         signature.update(dataBytes);
         byte[] digitalSignature = signature.sign();
 
+        // 서명 파일의 전체 경로를 생성
+        String signatureFilePath = AnimalFile.DIRECTORY_PATH + signatureFileName;
+
         // 서명 저장
-        try (FileOutputStream fos = new FileOutputStream(signatureFile1)) {
+        try (FileOutputStream fos = new FileOutputStream(signatureFilePath)) {
             fos.write(digitalSignature);
         }
 
@@ -57,24 +64,23 @@ public class DigitalSignature {
         return signature.verify(signatureBytes);
     }
 
-    public static void main(String[] args) {
-        try {
-            String privateKeyFile = "path/to/private/key";
-            String publicKeyFile = "path/to/public/key";
-            String dataFile = "path/to/data/file";
-            String signatureFile = "path/to/signature/file";
-
-            // 서명 생성
-            createSignature(privateKeyFile, signatureFile, dataFile);
-
-            // 서명 검증
-            boolean isVerified = verifySignature(publicKeyFile, signatureFile, dataFile);
-
-            System.out.println("Signature verified: " + isVerified);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//        try {
+//            String privateKeyFile = "path/to/private/key";
+//            String publicKeyFile = "path/to/public/key";
+//            String dataFile = "path/to/data/file";
+//            String signatureFile = "path/to/signature/file";
+//
+//            // 서명 생성
+//            createSignature(privateKeyFile, signatureFile, dataFile);
+//
+//            // 서명 검증
+//            boolean isVerified = verifySignature(publicKeyFile, signatureFile, dataFile);
+//
+//            System.out.println("Signature verified: " + isVerified);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 }
 
 

@@ -24,43 +24,42 @@ public class InfoRegi extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        // 파라미터 수집
-        String scientificName = request.getParameter("scientificName");
-        String commonName = request.getParameter("commonName");
-        String taxonomy = request.getParameter("taxonomy");
-        String morphologicalCharacteristics = request.getParameter("morphologicalCharacteristics");
+     // 파라미터 수집
+        String sciName = request.getParameter("sciName");
+        String comName = request.getParameter("comName");
+        String taxon = request.getParameter("taxon");
+        String morphChar = request.getParameter("morphChar");
         String sex = request.getParameter("sex");
-        String reproductiveInformation = request.getParameter("reproductiveInformation");
-        String locationOfDiscovery = request.getParameter("locationOfDiscovery");
-        String habitatType = request.getParameter("habitatType");
-        String habitatConditions = request.getParameter("habitatConditions");
+        String reproInfo = request.getParameter("reproInfo");
+        String locDiscovery = request.getParameter("locDiscovery");
+        String habType = request.getParameter("habType");
+        String habCond = request.getParameter("habCond");
         String diet = request.getParameter("diet");
-        String activityPatterns = request.getParameter("activityPatterns");
-        String socialStructure = request.getParameter("socialStructure");
-        String conservationStatus = request.getParameter("conservationStatus");
+        String actPatterns = request.getParameter("actPatterns");
+        String socStruct = request.getParameter("socStruct");
+        String consStatus = request.getParameter("consStatus");
         String threats = request.getParameter("threats");
-        String conservationMeasures = request.getParameter("conservationActions");
+        String consActions = request.getParameter("consActions");
 
-        // 동물 정보 객체 생성
-        AnimalInfo animalInfo = new AnimalInfo(scientificName, commonName, taxonomy, morphologicalCharacteristics, sex, reproductiveInformation, 
-        		locationOfDiscovery, habitatType, habitatConditions, diet, activityPatterns, socialStructure, conservationStatus, threats, conservationMeasures);
+     // 동물 정보 객체 생성
+        AnimalInfo animalInfo = new AnimalInfo(sciName, comName, taxon, morphChar, sex, reproInfo, locDiscovery, habType, habCond, diet, actPatterns, socStruct, consStatus, threats, consActions);
         
         String path = AnimalFile.DIRECTORY_PATH;
         
         try {
-            String fileInfo = AnimalInfoSaver.saveAnimalInfoToFile(animalInfo);
+        	String fileInfo = AnimalInfoSaver.saveAnimalInfoToFile(animalInfo);
 
             // 동적으로 생성된 파일명 사용
             String originFile = fileInfo; // 전체 파일 경로 포함되어 있음.
 
             
             String hashFile = "hashFile.txt";
-            String senderPriKeyF = "senderPri.key";
+            String senderPriKeyF = path + "senderPri.key";
             String signatureFile = "signature.sig";
-            String senderPubKeyF = "senderPub.key";
-            String secretKeyF = "secretKey.ser";
-            String combinedFile = "combinedFile.txt";
-            String encryptedFile = "encryptedFile.enc";
+            String senderPubKeyF = path + "senderPub.key";
+            String secretKeyF = path +"secretKey.ser";
+            String combinedFile = path + "combinedFile.txt";
+            String encryptedFile = path + "encryptedFile.enc";
             String recipientPubKeyF = "receiverPub.key";
             String encryptedSecretKeyFile = "encryptedSecretKey.dat";
             String finalOutput = path + "antmsehdanf.dat";
