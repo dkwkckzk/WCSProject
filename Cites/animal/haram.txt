@@ -1,0 +1,15 @@
+Scientific Name: haram
+Common Name: 하람이
+Taxon: 강아지
+Morphological Characteristics: 말티푸
+Sex: 암컷
+Reproductive Information: 모름
+Location of Discovery: 우리집
+Habitat Type: 땅
+Habitat Conditions: 모름
+Diet: 잡식
+Activity Patterns: 야행성같음
+Social Structure: 단독생활
+Conservation Status: 매우 위험
+Threats: 사람
+Conservation Actions: 우리집
