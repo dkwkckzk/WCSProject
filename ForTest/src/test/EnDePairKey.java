@@ -1,7 +1,7 @@
 // 컴퓨터학과_20211743_김연진
 /*비대칭 키 쌍을 사용하여 데이터를 암호화하고 복호화합니다. 예를 들어, 수신자의 공개키로 데이터를 암호화하고, 수신자는 자신의 개인키로 데이터를 복호화할 수 있습니다.*/
 
-package finalProject;
+package test;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;

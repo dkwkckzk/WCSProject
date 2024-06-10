@@ -1,6 +1,6 @@
 // 컴퓨터학과_20211743_김연진
 
-package finalProject;
+package test;
 
 import java.io.FileOutputStream;
 import java.nio.file.Files;

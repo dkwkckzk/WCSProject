@@ -2,7 +2,7 @@
 /*메시지의 해시 값을 계산합니다. 이 해시 값은 메시지의 무결성을 확인하는 데 사용되며, 
  * MakeSignature 클래스에서 디지털 서명을 생성할 때도 사용됩니다.*/
 
-package finalProject;
+package test;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

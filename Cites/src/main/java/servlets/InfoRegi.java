@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import finalProject.AnimalFile;
 import finalProject.AnimalInfo;
 import finalProject.AnimalInfoSaver;
-import finalProject.MakeDEnvelope;
+import finalProject.MakeEnc;
 
 /**
  * Servlet implementation class InfoRegi
  */
-@SuppressWarnings("serial")
+
 @WebServlet("/InfoRegi")
 public class InfoRegi extends HttpServlet {
 
@@ -57,15 +57,15 @@ public class InfoRegi extends HttpServlet {
             String senderPriKeyF = path + "senderPri.key";
             String signatureFile = "signature.sig";
             String senderPubKeyF = path + "senderPub.key";
-            String secretKeyF = path +"secretKey.ser";
+            String secretKeyF = path +"secretKey.key";
             String combinedFile = path + "combinedFile.txt";
             String encryptedFile = path + "encryptedFile.enc";
             String recipientPubKeyF = "receiverPub.key";
-            String encryptedSecretKeyFile = "encryptedSecretKey.dat";
+            String encryptedSecretKeyFile = path + "encryptedSecretKey.dat";
             String finalOutput = path + "antmsehdanf.dat";
 
-            // MakeDEnvelope 클래스 호출 (파일 경로를 명시하지 않고 파일 이름만 사용)
-            MakeDEnvelope.execute(originFile, hashFile, senderPriKeyF, signatureFile, senderPubKeyF, 
+            // MakeDEnvelope 클래스 호출
+            MakeEnc.execute(originFile, hashFile, senderPriKeyF, signatureFile, senderPubKeyF, 
             		secretKeyF, combinedFile, encryptedFile, recipientPubKeyF, encryptedSecretKeyFile, finalOutput);
             request.setAttribute("message", "동물 정보가 성공적으로 등록되고 파일에 저장되었습니다!");
         } catch (Exception e) {

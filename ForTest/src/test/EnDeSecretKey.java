@@ -1,7 +1,7 @@
 // 컴퓨터학과_20211743_김연진
 /*대칭키를 사용하여 데이터를 암호화하고 복호화합니다. 이 클래스는 주로 메시지 내용의 암호화와 복호화에 사용됩니다.*/
 
-package finalProject;
+package test;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
