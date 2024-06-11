@@ -24,7 +24,7 @@ public class InfoRegi extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-     // 파라미터 수집
+        // 파라미터 수집
         String sciName = request.getParameter("sciName");
         String comName = request.getParameter("comName");
         String taxon = request.getParameter("taxon");
@@ -41,38 +41,35 @@ public class InfoRegi extends HttpServlet {
         String threats = request.getParameter("threats");
         String consActions = request.getParameter("consActions");
 
-     // 동물 정보 객체 생성
+        // 동물 정보 객체 생성
         AnimalInfo animalInfo = new AnimalInfo(sciName, comName, taxon, morphChar, sex, reproInfo, locDiscovery, habType, habCond, diet, actPatterns, socStruct, consStatus, threats, consActions);
-        
-        String path = AnimalFile.DIRECTORY_PATH;
-        
+
+        String senderPath = AnimalFile.SENDER_PATH;
+        String path = AnimalFile.PUBLIC_PATH;
+
         try {
-        	String fileInfo = AnimalInfoSaver.saveAnimalInfoToFile(animalInfo);
+            // saveAnimalInfoToFile 메서드를 호출하고 반환값을 배열로 받습니다.
+            String[] fileInfo = AnimalInfoSaver.saveAnimalInfoToFile(animalInfo);
 
-            // 동적으로 생성된 파일명 사용
-            String originFile = fileInfo; // 전체 파일 경로 포함되어 있음.
+            // 반환된 파일명과 경로를 사용합니다.
+            String originF = fileInfo[1];
 
-            
-            String hashFile = "hashFile.txt";
-            String senderPriKeyF = path + "senderPri.key";
-            String signatureFile = "signature.sig";
-            String senderPubKeyF = path + "senderPub.key";
-            String secretKeyF = path +"secretKey.key";
-            String combinedFile = path + "combinedFile.txt";
-            String encryptedFile = path + "encryptedFile.enc";
-            String recipientPubKeyF = "receiverPub.key";
-            String encryptedSecretKeyFile = path + "encryptedSecretKey.dat";
-            String finalOutput = path + "antmsehdanf.dat";
+            String signatureF = "dsignature.sig";
+            String senderPubKeyF = "senderPub.key";
+            String senderPriKeyF = "senderPri.key";
+            String secretKeyF = "secretKey.key";
+            String receiverPubKeyF = "receiverPub.key";
+            String encryptedSecretKeyF = "DigitalEnvelope.dev"; //?
 
             // MakeDEnvelope 클래스 호출
-            MakeEnc.execute(originFile, hashFile, senderPriKeyF, signatureFile, senderPubKeyF, 
-            		secretKeyF, combinedFile, encryptedFile, recipientPubKeyF, encryptedSecretKeyFile, finalOutput);
+            MakeEnc.execute(originF, senderPriKeyF, signatureF, senderPubKeyF, secretKeyF, receiverPubKeyF, encryptedSecretKeyF, senderPath, path);
             request.setAttribute("message", "동물 정보가 성공적으로 등록되고 파일에 저장되었습니다!");
         } catch (Exception e) {
-        	e.printStackTrace();
+            e.printStackTrace();
             request.setAttribute("message", "오류 발생: " + e.getMessage());
         }
 
-        //request.getRequestDispatcher("/.jsp").forward(request, response);
+        // 결과 페이지로 포워딩
+        request.getRequestDispatcher("/Main.jsp").forward(request, response);
     }
 }

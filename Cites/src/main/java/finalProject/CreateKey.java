@@ -14,7 +14,7 @@ public class CreateKey {
             String senderPriKeyFile = "senderPri.key";
             
             senderKeyPair.savePubKey(senderKeyPair.getPubKey(), senderPubKeyFile); // 송신자의 공개키 저장
-            senderKeyPair.savePriKey(senderKeyPair.getPriKey(), senderPriKeyFile); // 송신자의 개인키 저장
+            senderKeyPair.savePriKey(senderKeyPair.getPriKey(), senderPriKeyFile, AnimalFile.SENDER_PATH); // 송신자의 개인키 저장
             
             System.out.println("송신자 키 쌍이 성공적으로 저장되었습니다.");
 
@@ -26,7 +26,7 @@ public class CreateKey {
             String receiverPriKeyFile = "receiverPri.key";
             
             receiverKeyPair.savePubKey(receiverKeyPair.getPubKey(), receiverPubKeyFile); // 수신자의 공개키 저장
-            receiverKeyPair.savePriKey(receiverKeyPair.getPriKey(), receiverPriKeyFile); // 수신자의 개인키 저장
+            receiverKeyPair.savePriKey(receiverKeyPair.getPriKey(), receiverPriKeyFile, AnimalFile.RECIVER_PATH); // 수신자의 개인키 저장
             
             System.out.println("수신자 키 쌍이 성공적으로 저장되었습니다.");
             

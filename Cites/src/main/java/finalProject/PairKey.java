@@ -2,6 +2,7 @@
 
 package finalProject;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -47,32 +48,44 @@ public class PairKey {
     }
     
     // 공개 키를 파일로 저장하는 메소드
-    public void savePubKey(PublicKey pubKey, String filename) throws IOException {
-        try (FileOutputStream fos = new FileOutputStream(filename);
+    public void savePubKey(PublicKey pubKey, String keyFname) throws IOException {
+        File pubKeyFile = new File(AnimalFile.PUBLIC_PATH, keyFname);
+        try (FileOutputStream fos = new FileOutputStream(pubKeyFile);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(pubKey);
         }
     }
+    
+// // 공개 키를 파일로 저장하는 메소드
+//    public void savePubKey(PublicKey pubKey, File pubKeyFile) throws IOException {
+//        try (FileOutputStream fos = new FileOutputStream(pubKeyFile);
+//             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+//            oos.writeObject(pubKey);
+//        }
+//    }
 
     // 개인 키를 파일로 저장하는 메소드
-    public void savePriKey(PrivateKey priKey, String filename) throws IOException {
-        try (FileOutputStream fos = new FileOutputStream(filename);
+    public void savePriKey(PrivateKey priKey, String keyFname, String path) throws IOException {
+        File priKeyFile = new File(path, keyFname);
+        try (FileOutputStream fos = new FileOutputStream(priKeyFile);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(priKey);
         }
     }
 
-    // 파일로부터 공개 키를 불러오는 메소드
-    public static PublicKey loadPubKey(String filename) throws IOException, ClassNotFoundException {
-        try (FileInputStream fis = new FileInputStream(filename);
+ // 파일로부터 공개 키를 불러오는 메소드
+    public static PublicKey loadPubKey(String keyFname, String path) throws IOException, ClassNotFoundException {
+        File pubKeyFile = new File(path, keyFname);
+        try (FileInputStream fis = new FileInputStream(pubKeyFile);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             return (PublicKey) ois.readObject();
         }
     }
 
     // 파일로부터 개인 키를 불러오는 메소드
-    public static PrivateKey loadPriKey(String filename) throws IOException, ClassNotFoundException {
-        try (FileInputStream fis = new FileInputStream(filename);
+    public static PrivateKey loadPriKey(String keyFname, String path) throws IOException, ClassNotFoundException {
+        File priKeyFile = new File(path, keyFname);
+        try (FileInputStream fis = new FileInputStream(priKeyFile);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             return (PrivateKey) ois.readObject();
         }

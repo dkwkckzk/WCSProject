@@ -2,6 +2,7 @@
 
 package finalProject;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,9 +28,11 @@ class Secret_Key {
             return keyGenerator.generateKey();
     }
 
-    // 비밀키 저장
+    // 비밀키 저장 (송신자 경로에 저장)
     public boolean saveSKey(SecretKey secretKey, String keyFname) {
-        try (FileOutputStream fos = new FileOutputStream(keyFname);
+    	File secretFile = new File(AnimalFile.SENDER_PATH, keyFname);
+    	
+        try (FileOutputStream fos = new FileOutputStream(secretFile);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(secretKey);
             return true;
@@ -39,9 +42,12 @@ class Secret_Key {
         }
     }
 
-    // 비밀키 불러오기
+    
+    // 비밀키 불러오기 (송신자 경로에서 불러오기)
     public static SecretKey loadSKey(String keyFname) {
-        try (FileInputStream fis = new FileInputStream(keyFname);
+    	File secretFile = new File(AnimalFile.SENDER_PATH, keyFname);
+    	
+        try (FileInputStream fis = new FileInputStream(secretFile);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             return (SecretKey) ois.readObject();
         } catch (FileNotFoundException e) {

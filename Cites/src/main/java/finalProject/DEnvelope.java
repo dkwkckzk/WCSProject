@@ -10,7 +10,7 @@ import javax.crypto.Cipher;
 import javax.crypto.CipherOutputStream;
 import javax.crypto.SecretKey;
 
-public class DEnvelope {
+public class DEnvelope { // 사용 안되는 클래스
 
     // 대칭 키를 RSA 공개 키로 암호화하는 메서드
     private static byte[] encryptSymmetricKey(PublicKey publicKey, SecretKey symmetricKey) throws Exception {
