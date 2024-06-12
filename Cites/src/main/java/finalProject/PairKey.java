@@ -24,7 +24,7 @@ public class PairKey {
     private PrivateKey priKey;
     private PublicKey pubKey;
 
-    public static PairKey getInstance(int keylength) throws NoSuchAlgorithmException, NoSuchProviderException {
+    static PairKey getInstance(int keylength) throws NoSuchAlgorithmException, NoSuchProviderException {
         PairKey rslt = new PairKey();
         
         rslt.keyGen = KeyPairGenerator.getInstance(KeyAlgorithm);
@@ -33,7 +33,7 @@ public class PairKey {
         return rslt;
     }
     
-    public void createPKey() {
+    void createPKey() {
         this.pair = this.keyGen.generateKeyPair();
         this.priKey = pair.getPrivate();
         this.pubKey = pair.getPublic();
@@ -48,7 +48,7 @@ public class PairKey {
     }
     
     // 공개 키를 파일로 저장하는 메소드
-    public void savePubKey(PublicKey pubKey, String keyFname) throws IOException {
+    void savePubKey(PublicKey pubKey, String keyFname) throws IOException {
         File pubKeyFile = new File(AnimalFile.PUBLIC_PATH, keyFname);
         try (FileOutputStream fos = new FileOutputStream(pubKeyFile);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -56,16 +56,8 @@ public class PairKey {
         }
     }
     
-// // 공개 키를 파일로 저장하는 메소드
-//    public void savePubKey(PublicKey pubKey, File pubKeyFile) throws IOException {
-//        try (FileOutputStream fos = new FileOutputStream(pubKeyFile);
-//             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-//            oos.writeObject(pubKey);
-//        }
-//    }
-
     // 개인 키를 파일로 저장하는 메소드
-    public void savePriKey(PrivateKey priKey, String keyFname, String path) throws IOException {
+    void savePriKey(PrivateKey priKey, String keyFname, String path) throws IOException {
         File priKeyFile = new File(path, keyFname);
         try (FileOutputStream fos = new FileOutputStream(priKeyFile);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -74,7 +66,7 @@ public class PairKey {
     }
 
  // 파일로부터 공개 키를 불러오는 메소드
-    public static PublicKey loadPubKey(String keyFname, String path) throws IOException, ClassNotFoundException {
+    static PublicKey loadPubKey(String keyFname, String path) throws IOException, ClassNotFoundException {
         File pubKeyFile = new File(path, keyFname);
         try (FileInputStream fis = new FileInputStream(pubKeyFile);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -83,7 +75,7 @@ public class PairKey {
     }
 
     // 파일로부터 개인 키를 불러오는 메소드
-    public static PrivateKey loadPriKey(String keyFname, String path) throws IOException, ClassNotFoundException {
+    static PrivateKey loadPriKey(String keyFname, String path) throws IOException, ClassNotFoundException {
         File priKeyFile = new File(path, keyFname);
         try (FileInputStream fis = new FileInputStream(priKeyFile);
              ObjectInputStream ois = new ObjectInputStream(fis)) {

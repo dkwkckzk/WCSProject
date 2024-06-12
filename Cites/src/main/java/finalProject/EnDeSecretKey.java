@@ -16,12 +16,12 @@ public class EnDeSecretKey {
     private Cipher cipher;
 
     // 생성자: 주어진 알고리즘으로 Cipher 객체 초기화
-    public EnDeSecretKey(String algorithm) throws NoSuchAlgorithmException, NoSuchPaddingException {
+    EnDeSecretKey(String algorithm) throws NoSuchAlgorithmException, NoSuchPaddingException {
         cipher = Cipher.getInstance(algorithm);
     }
 
     // 파일 암호화 메서드
-    public void encryptFile(SecretKey secretKey, String inputFilePath, String outputFilePath)
+    void encryptFile(SecretKey secretKey, String inputFilePath, String outputFilePath)
             throws InvalidKeyException, IOException {
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 
@@ -38,7 +38,7 @@ public class EnDeSecretKey {
     }
 
     // 파일 복호화 메서드
-    public byte[] decryptFile(SecretKey secretKey, String inputFilePath)
+    byte[] decryptFile(SecretKey secretKey, String inputFilePath)
             throws InvalidKeyException, IOException {
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
 

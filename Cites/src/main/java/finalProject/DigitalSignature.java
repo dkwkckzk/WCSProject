@@ -4,16 +4,21 @@ package finalProject;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Signature;
+import java.security.SignatureException;
 
 public class DigitalSignature {
 	
 	// ===== 전자서명 생성 =====
-    static byte[] createSignature(String senderpriKeyF, String digiSignF, String originF) throws Exception {
+	static byte[] createSignature(String senderpriKeyF, String digiSignF, String originF) 
+			throws IOException, NoSuchAlgorithmException, InvalidKeyException, SignatureException, ClassNotFoundException {
         // 개인키 읽기
 	    String path = AnimalFile.SENDER_PATH;
 
@@ -46,8 +51,9 @@ public class DigitalSignature {
     }
     
 
- // ===== 전자서명 검증 =====
-    static boolean verifySignature(String pubKeyFile, String signatureFileName, String dataFile) throws Exception {
+    // ===== 전자서명 검증 =====
+	static boolean verifySignature(String pubKeyFile, String signatureFileName, String dataFile) 
+			throws IOException, NoSuchAlgorithmException, InvalidKeyException, SignatureException, ClassNotFoundException {
         // 공개키 읽기
         PublicKey publicKey = PairKey.loadPubKey(pubKeyFile, AnimalFile.RECIVER_PATH);
 

@@ -1,15 +1,15 @@
-Mauremys reevesii
-남생이
-동물계, 척삭동물문, 파충강, 거북목, 잠경아목, 돌거북이과, 남생이속, 남생이
-20~25cm정도, 중앙과 양쪽 등면에는 총 3개의 뚜렷한 용골
-미상
-10~11월 번식기, 6~7월 4~15개의 알 산란
-하천, 호수, 저수지 등
-물가
-물가와 육지가 있을 것
-잡식성
-4~11월 활동, 겨울잠
-단독생활
-EN
-서식지 파괴, 생태교란종
-복원 연구 및 사업 진행
+Scientific Name: Mauremys reevesii
+Common Name: 남생이
+Taxonomy: 동물계, 척삭동물문, 파충강, 거북목, 잠경아목, 돌거북이과, 남생이속, 남생이
+Morphological Characteristics: 20~25cm정도, 중앙과 양쪽 등면에는 총 3개의 뚜렷한 용골
+Sex: 미상
+Reproduction Information: 10~11월 번식기, 6~7월 4~15개의 알 산란
+Location of Discovery: 하천, 호수, 저수지 등
+Habitat Type: 물가
+Habitat Conditions: 물가와 육지가 있을 것
+Diet: 잡식성
+Activity Patterns: 4~11월 활동, 겨울잠
+Social Structure: 단독생활
+Conservation Status: EN
+Threats: 서식지 파괴, 생태교란종
+Conservation Actions: 복원 연구 및 사업 진행

@@ -9,7 +9,7 @@ import javax.crypto.SecretKey;
 public class MakeEnc { // 송신자 역할
 
 	// 전자서명 생성(송신자의 개인키로 암호화 한 원문 해시값)
-	public static void createDigSign(String originFile, String senderPriKeyF, String signatureFile) throws Exception {
+	static void createDigSign(String originFile, String senderPriKeyF, String signatureFile) throws Exception {
 	    System.out.println("오리지널 경로: " + originFile);
 
 	    // 개인키 읽기
@@ -23,13 +23,13 @@ public class MakeEnc { // 송신자 역할
 	
 	
     // 암호문 생성 (<원문, 전자서명, 송신자의 공개키>를 비밀키로 암호화) // 경로
-    public static void generateCryptogram(String originF, String signatureF, String senderPubKeyF, String secretKeyF, String path) throws Exception {
+    static void generateCryptogram(String originF, String signatureF, String senderPubKeyF, String secretKeyF, String path) throws Exception {
     	EnDeCryptogram.generate(originF, signatureF, senderPubKeyF, secretKeyF);
     }
     
     
  // 전자봉투 생성 (비밀키를 수신자의 공개키로 암호화)
-    public static void createEnvelope(String envelopeF, PublicKey receiverPubKeyF, SecretKey secret) throws Exception {
+    static void createEnvelope(String envelopeF, PublicKey receiverPubKeyF, SecretKey secret) throws Exception {
         // 대칭 키(secret)를 바이트 배열로 변환
         byte[] secretKeyBytes = secret.getEncoded();
 

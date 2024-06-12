@@ -59,6 +59,3 @@ public class AnimalInfo {
     public String getThreats() { return threats; }
     public String getConsActions() { return consActions; }
 }
-
-
-

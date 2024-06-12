@@ -17,16 +17,18 @@
       grid-template-columns: auto; /* 헤더의 너비를 컨텐츠에 맞게 설정 */
     }
 
-	.custom-heading {
-	  font-family: 'HU네모의꿈180', serif;
-	  font-size: 3.5rem;
-	  margin-bottom: 0;
+    .custom-heading {
+            margin-top: 50px;
+            font-family: 'HU네모의꿈180', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px; /* 헤더와 메인 컨텐츠 간격 조정 */
+            color: #6f42c1;
+        }
 
-	}
 
 
     .content-box {
-      border: 1px solid #ccc;
+      
       padding: 20px;
       text-align: center;
       margin: 10px 0;
@@ -37,7 +39,8 @@
     }
 
     .content-box button {
-      font-size: 16px;
+    	font-family: '세종학당', serif;
+      font-size: 20px;
       padding: 10px 200px; /* 버튼 길이 조정 */
       margin: 10px 0; /* 버튼 간격 설정 */
     }

@@ -29,7 +29,7 @@ class Secret_Key {
     }
 
     // 비밀키 저장 (송신자 경로에 저장)
-    public boolean saveSKey(SecretKey secretKey, String keyFname) {
+    boolean saveSKey(SecretKey secretKey, String keyFname) {
     	File secretFile = new File(AnimalFile.SENDER_PATH, keyFname);
     	
         try (FileOutputStream fos = new FileOutputStream(secretFile);
@@ -44,7 +44,7 @@ class Secret_Key {
 
     
     // 비밀키 불러오기 (송신자 경로에서 불러오기)
-    public static SecretKey loadSKey(String keyFname) {
+    static SecretKey loadSKey(String keyFname) {
     	File secretFile = new File(AnimalFile.SENDER_PATH, keyFname);
     	
         try (FileInputStream fis = new FileInputStream(secretFile);

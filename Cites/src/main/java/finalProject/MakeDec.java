@@ -16,7 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class MakeDec {
     // 전자봉투 복호화
-    public static SecretKey decryptEnvelope(String envelopeFile, PrivateKey receiverPrivateKey) throws Exception {
+    static SecretKey decryptEnvelope(String envelopeFile, PrivateKey receiverPrivateKey) throws Exception {
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
         cipher.init(Cipher.DECRYPT_MODE, receiverPrivateKey);
 
@@ -31,14 +31,14 @@ public class MakeDec {
     }
 
     // 암호문 복호화
-    public static void eliminateCryptogram(String enOrigin, String enSig, String enSendPubK, SecretKey secretKey) throws Exception {
+    static void eliminateCryptogram(String enOrigin, String enSig, String enSendPubK, SecretKey secretKey) throws Exception {
     	String path = AnimalFile.SENDER_PATH+"/";
     	String SPK = path+enSendPubK;
     	EnDeCryptogram.eliminate(enOrigin, enSig, SPK, secretKey);
     }
 
     // 전자서명 검증
-    public static boolean verifySignature(String pubKeyFile, String sigFile, String dataFile) throws Exception {
+    static boolean verifySignature(String pubKeyFile, String sigFile, String dataFile) throws Exception {
 
         return DigitalSignature.verifySignature(pubKeyFile, sigFile, dataFile);
     }
@@ -71,34 +71,4 @@ public class MakeDec {
 
         return isVerified;
     }
-    
-//    public static void main(String[] args) {
-//    	String path = AnimalFile.SENDER_PATH+"/";
-//        try {
-//            // 테스트 파일 경로 설정
-//            String envelopeFile = path+"DigitalEnvelope.dev";
-//            String receiverPriKeyFile = "receiverPri.key";
-//            String enOrigin = path+"enc_Ori.dat";
-//            String enSig = path+"enc_Sig.dat";
-//            String enSendPubK = "enc_SPubK.dat";
-//
-//            // MakeDec 클래스의 execute 메서드 호출
-//            boolean isVerified = MakeDec.execute(envelopeFile, receiverPriKeyFile, enOrigin, enSig, enSendPubK);
-//
-//            // 전자서명 검증 결과에 따라 출력
-//            if (isVerified) {
-//                System.out.println("전자서명 검증 성공");
-//
-//                // 전자서명 검증 성공 후 decryptedOrigin.txt의 내용을 출력
-//                String content = new String(Files.readAllBytes(Paths.get(new File(AnimalFile.RECIVER_PATH, "dec_Ori.txt").getAbsolutePath())));
-//                System.out.println("decryptedOrigin.txt의 내용:\n" + content);
-//            } else {
-//                System.out.println("전자서명 검증 실패");
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.out.println("오류 발생: " + e.getMessage());
-//        }
-//    }
 }
